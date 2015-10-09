@@ -1,38 +1,44 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- -*- html -*- -->
+
+<!-- Time-stamp: "2015-10-10 07:07:31 by jiangtao" -->
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>hello</title>
-    <meta name="author" content="Stone Jiang">
-		<canvas id="myCanvas" witdth="640" height="640" style="border:1px solid read;" >
-您的浏览器不支持cavas标签
+	<head>
+		<meta charset="UTF-8">
+		<title>HTML5 Canvas绘制弧线入门示例</title>
+	</head>
+	<body>
+
+		<!-- 添加canvas标签，并加上红色边框以便于在页面上查看 -->
+		<canvas id="myCanvas" width="640px" height="640px" style="border: 1px solid red;">
+			您的浏览器不支持canvas标签。
 		</canvas>
-		<!-- http://www.365mini.com/page/html5-canvas-circle.htm -->
+
 		<script type="text/javascript">
-			var canvas=document.getElementById('myCanvas')
-			if (canvas.getContext){
-			var ctx = canvas.getContext ("2d");
+			//获取Canvas对象(画布)
+			var canvas = document.getElementById("myCanvas");
+			//简单地检测当前浏览器是否支持Canvas对象，以免在一些不支持html5的浏览器中提示语法错误
+			if(canvas.getContext){
+			//获取对应的CanvasRenderingContext2D对象(画笔)
+			var ctx = canvas.getContext("2d");
+
+			//开始一个新的绘制路径
 			ctx.beginPath();
-			ctx.strokeStyle = "blue";
+			//设置弧线的颜色为蓝色
+			ctx.strokeStyle = "#222222";
 			var circle = {
-			x: 100,
-			y: 100,
-			r: 50
+			x : 320,    //圆心的x轴坐标值
+			y : 320,    //圆心的y轴坐标值
+			r : 320      //圆的半径
 			};
-			ctx.arc (circle.x, circle.y, circle.r, 0,Math.PI / 2 * 4, false);
+			//以canvas中的坐标点(100,100)为圆心，绘制一个半径为50px的圆形
+			ctx.arc(circle.x, circle.y, circle.r, 0, Math.PI * 2, true);
+			//按照指定的路径绘制弧线
+
 			ctx.stroke();
+//			ctx.fillStype="#555555";
+			ctx.fill ();
 			}
 		</script>
-  </head>
-
-  <body>
-    <h1>hello</h1>
-
-    
-    
-    <hr>
-    <address>
-      <a href="mailto:jiangtao@Jiangtao">Stone Jiang</a>,
-      10 Oct 2015
-    </address>
-  </body>
-</html>
+	</body>
+	</html>
